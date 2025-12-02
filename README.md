@@ -1,7 +1,6 @@
 #  sosomory
  Notion D-Day Widget Generator
-
- 노션 페이지에 임베드 가능한 디데이 카운터 위젯 생성기
+  - 노션 페이지에 임베드 가능한 디데이 카운터 위젯 생성기
 
 ## 기술 스택
 - Frontend: React 19, TypeScript, Tailwind CSS, Radix UI, Wouter, Vite, Framer Motion, html-to-image

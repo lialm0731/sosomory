@@ -60,4 +60,3 @@ fetch("https://sosomory.onrender.com/api/dday")
 
 ## 라이선스
 MIT
-```

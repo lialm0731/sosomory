@@ -49,3 +49,9 @@ export default defineConfig({
     },
   },
 });
+export default defineConfig({
+  base: "/sosomory/",
+  build: {
+    outDir: "dist"
+  },
+})

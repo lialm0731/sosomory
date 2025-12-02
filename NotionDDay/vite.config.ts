@@ -11,15 +11,10 @@ export default defineConfig({
     runtimeErrorOverlay(),
     tailwindcss(),
     metaImagesPlugin(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
+    ...(process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined
       ? [
-          await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer(),
-          ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
+          await import("@replit/vite-plugin-cartographer").then((m) => m.cartographer()),
+          await import("@replit/vite-plugin-dev-banner").then((m) => m.devBanner()),
         ]
       : []),
   ],
@@ -31,15 +26,14 @@ export default defineConfig({
     },
   },
   css: {
-    postcss: {
-      plugins: [],
-    },
+    postcss: { plugins: [] },
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist"),
+    outDir: path.resolve(import.meta.dirname, "docs"), // GitHub Pages용으로 docs 폴더에 빌드
     emptyOutDir: true,
   },
+  base: "/sosomory/", // GitHub 저장소 이름과 동일하게 설정
   server: {
     host: "0.0.0.0",
     allowedHosts: true,
@@ -49,7 +43,3 @@ export default defineConfig({
     },
   },
 });
-export default defineConfig({
-  base: "/sosomory/",
-  build: { outDir: "dist" }
-})

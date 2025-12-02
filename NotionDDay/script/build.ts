@@ -43,28 +43,6 @@ async function buildAll() {
     emptyOutDir: true     // 빌드 전에 dist 폴더를 깨끗하게 비움
   }
   });
-
-  console.log("building server...");
-  const pkg = JSON.parse(await readFile("package.json", "utf-8"));
-  const allDeps = [
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.devDependencies || {}),
-  ];
-  const externals = allDeps.filter((dep) => !allowlist.includes(dep));
-
-  await esbuild({
-    entryPoints: ["server/index.ts"],
-    platform: "node",
-    bundle: true,
-    format: "cjs",
-    outfile: "dist/index.cjs",
-    define: {
-      "process.env.NODE_ENV": '"production"',
-    },
-    minify: true,
-    external: externals,
-    logLevel: "info",
-  });
 }
 
 buildAll().catch((err) => {

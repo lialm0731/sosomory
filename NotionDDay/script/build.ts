@@ -36,7 +36,13 @@ async function buildAll() {
   await rm("dist", { recursive: true, force: true });
 
   console.log("building client...");
-  await viteBuild();
+  await viteBuild({
+    build: {
+      outDir: "dist",       // 결과물을 dist에 직접 생성
+    assetsDir: "assets",  // 정적 파일은 dist/assets에 들어가도록 (선택)
+    emptyOutDir: true     // 빌드 전에 dist 폴더를 깨끗하게 비움
+  }
+  });
 
   console.log("building server...");
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));

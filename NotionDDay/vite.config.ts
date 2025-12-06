@@ -30,10 +30,10 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "docs"), // GitHub Pages용으로 docs 폴더에 빌드
+    outDir: "dist", // ✅ Vercel은 dist를 기본으로 찾습니다
     emptyOutDir: true,
   },
-  base: "/sosomory/", // GitHub 저장소 이름과 동일하게 설정
+  base: "/", // ✅ Vercel에서는 저장소 이름 경로 필요 없음
   server: {
     host: "0.0.0.0",
     allowedHosts: true,
